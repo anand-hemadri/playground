@@ -1,6 +1,6 @@
 #eclipse
-/.settings/
-/target/
+.settings/
+target/
 .project
 .classpath
 .project
