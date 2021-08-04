@@ -18,7 +18,7 @@ import net.matrix.petclinic.providers.CrudServiceProvider;
  * @author anand.hemadri
  *
  */
-public abstract class AbstractInMemoryServiceRepository<T extends BaseEntity> implements CrudServiceProvider<T> {
+public abstract class AbstractMapServiceRepository<T extends BaseEntity> implements CrudServiceProvider<T> {
     protected final Map<Long, T> dataSet = new HashMap<>();
 
     @Override

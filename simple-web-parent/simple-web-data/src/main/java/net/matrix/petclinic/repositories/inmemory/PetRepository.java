@@ -12,7 +12,7 @@ import net.matrix.petclinic.providers.PetServiceProvider;
  * @author anand.hemadri
  *
  */
-public class PetRepository extends AbstractInMemoryServiceRepository<Pet> implements PetServiceProvider {
+public class PetRepository extends AbstractMapServiceRepository<Pet> implements PetServiceProvider {
     private static final Pet EMPTY_OBJECT = new Pet();
 
     @Override

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package net.matrix.springframework.bootstrap;
+package net.matrix.bookstore.bootstrap;
 
 import org.springframework.boot.CommandLineRunner;
 
@@ -17,7 +17,7 @@ import net.matrix.bookstore.repositories.PublisherRepository;
  *
  */
 // @Component
-public class BookStoreDataBootStrap implements CommandLineRunner {
+public class BookStoreDataLoader implements CommandLineRunner {
 
     final AuthorRepository authorRepository;
     final BookRepository bookRepository;
@@ -28,7 +28,7 @@ public class BookStoreDataBootStrap implements CommandLineRunner {
      * @param bookRepository
      * @param publisherRepository
      */
-    public BookStoreDataBootStrap(AuthorRepository authorRepository, BookRepository bookRepository, PublisherRepository publisherRepository) {
+    public BookStoreDataLoader(AuthorRepository authorRepository, BookRepository bookRepository, PublisherRepository publisherRepository) {
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
         this.publisherRepository = publisherRepository;
