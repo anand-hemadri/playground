@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package net.matrix.petclinic.controllers;
 
@@ -12,7 +12,7 @@ import net.matrix.petclinic.repositories.inmemory.VeterinarianRepository;
 
 /**
  * A controller to handle requests for pet {@link Veterinarian veterinarians}.
- * 
+ *
  * @author anand.hemadri
  *
  */
@@ -30,8 +30,8 @@ public class VeterinarianController {
 
 	@RequestMapping({ "", "/", "/index", "/index.html" })
 	public String listVeterinarians(Model model) {
-		// model.addAttribute("vets.title", "Veterinarians listing...");
-		// model.addAttribute("vets", veterinarianRepository.findAll());
+		model.addAttribute("title", "Vets listing...");
+		model.addAttribute("vets", veterinarianRepository.findAll());
 		return "vets/index";
 	}
 }

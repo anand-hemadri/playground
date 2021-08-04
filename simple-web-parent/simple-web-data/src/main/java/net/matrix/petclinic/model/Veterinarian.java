@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package net.matrix.petclinic.model;
 
@@ -12,23 +12,23 @@ import java.util.Set;
  *
  */
 public class Veterinarian extends Person {
-    private Set<Speciality> specialty;
+	private Set<Speciality> specialty;
 
-    /**
-     * Returns the collection of specialities.
-     * 
-     * @return the speciality
-     */
-    public Collection<Speciality> getSpeciality() {
-        return Collections.unmodifiableCollection(specialty);
-    }
+	/**
+	 * Add a {@link Speciality speciality} to {@link Veterinarian veterinarian}.
+	 * 
+	 * @param name the name of the speciality
+	 */
+	public void addSpeciality(String name) {
+		specialty.add(new Speciality(name));
+	}
 
-    /**
-     * Add a {@link Speciality speciality} to {@link Veterinarian veterinarian}.
-     * 
-     * @param name the name of the speciality
-     */
-    public void addSpeciality(String name) {
-        specialty.add(new Speciality(name));
-    }
+	/**
+	 * Returns the collection of specialities.
+	 * 
+	 * @return the speciality
+	 */
+	public Collection<Speciality> getSpeciality() {
+		return Collections.unmodifiableCollection(specialty);
+	}
 }
