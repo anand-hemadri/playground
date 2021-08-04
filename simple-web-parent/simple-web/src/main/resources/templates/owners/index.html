@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://wwww.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
 <head>
 <meta charset="UTF-8">
-<title>Owners listing</title>
 </head>
 <body>
 	<h1>Owners listing....</h1>
-	<table>
+	<table id='owners' class="table table-striped">
 		<tr>
 			<th>Last Name</th>
 			<th>First Name</th>
@@ -15,11 +14,11 @@
 			<th>Telephone</th>
 		</tr>
 		<tr th:each="owner : ${owners}">
-			<td th:text="${owner.lastName}">lastName</td>
-			<td th:text="${owner.firstName}">firstName</td>
-			<td th:text="${owner.address}">lastName</td>
-			<td th:text="${owner.city}">lastName</td>
-			<td th:text="${owner.telephone}">lastName</td>
+			<td style="width:150px;" th:text="${owner.lastName}">lastName</td>
+			<td style="width:150px;" th:text="${owner.firstName}">firstName</td>
+			<td style="width:200px;" th:text="${owner.address}">lastName</td>
+			<td style="width:100px;" th:text="${owner.city}">city</td>
+			<td style="width:200px;" th:text="${owner.telephone}">telephone</td>
 		</tr>
 	</table>
 </body>
