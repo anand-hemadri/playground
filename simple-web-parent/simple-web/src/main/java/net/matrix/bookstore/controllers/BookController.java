@@ -3,7 +3,6 @@
  */
 package net.matrix.bookstore.controllers;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -16,7 +15,7 @@ import net.matrix.bookstore.repositories.BookRepository;
  * @author anand.hemadri
  *
  */
-@Controller
+//@Controller
 public class BookController {
 	private final BookRepository bookRepository;
 

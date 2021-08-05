@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import net.matrix.petclinic.model.Owner;
 import net.matrix.petclinic.model.Pet;
-import net.matrix.petclinic.repositories.inmemory.OwnerRepository;
+import net.matrix.petclinic.repositories.map.OwnerRepository;
 
 /**
  * A controller to handle requests for {@link Pet pet} {@link Owner owners}.
@@ -15,7 +15,7 @@ import net.matrix.petclinic.repositories.inmemory.OwnerRepository;
  *
  */
 @Controller
-@RequestMapping("owners")
+@RequestMapping({ "owners", "owners.html" })
 public class OwnerController {
 	private final OwnerRepository ownerRepository;
 
@@ -34,7 +34,7 @@ public class OwnerController {
 	 * @param model the model
 	 * @return the list of owners
 	 */
-	@RequestMapping({ "", "/", "/owners.html" })
+	@RequestMapping("")
 	public String listOwners(Model model) {
 		model.addAttribute("owners", ownerRepository.findAll());
 		return "owners/index";

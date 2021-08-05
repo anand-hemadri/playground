@@ -4,7 +4,7 @@
 package net.matrix.petclinic.providers;
 
 import net.matrix.petclinic.model.Pet;
-import net.matrix.petclinic.repositories.inmemory.EntityNotFoundException;
+import net.matrix.petclinic.repositories.map.EntityNotFoundException;
 
 
 /**
@@ -13,7 +13,7 @@ import net.matrix.petclinic.repositories.inmemory.EntityNotFoundException;
  * @author anand.hemadri
  *
  */
-public interface PetServiceProvider extends CrudServiceProvider<Pet> {
+public interface PetProvider extends CrudServiceProvider<Pet> {
     /**
      * Search by name of the {@link Pet}.
      * 

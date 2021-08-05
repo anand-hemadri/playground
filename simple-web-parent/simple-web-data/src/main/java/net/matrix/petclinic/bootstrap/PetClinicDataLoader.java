@@ -3,13 +3,20 @@
  */
 package net.matrix.petclinic.bootstrap;
 
+import java.time.LocalDate;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import net.matrix.petclinic.model.Owner;
+import net.matrix.petclinic.model.Pet;
+import net.matrix.petclinic.model.PetType;
+import net.matrix.petclinic.model.Speciality;
 import net.matrix.petclinic.model.Veterinarian;
-import net.matrix.petclinic.repositories.inmemory.OwnerRepository;
-import net.matrix.petclinic.repositories.inmemory.VeterinarianRepository;
+import net.matrix.petclinic.repositories.map.OwnerRepository;
+import net.matrix.petclinic.repositories.map.PetTypeRepository;
+import net.matrix.petclinic.repositories.map.SpecialityRepository;
+import net.matrix.petclinic.repositories.map.VeterinarianRepository;
 
 /**
  * A boot strap implementation to load test data upon startup of the
@@ -21,28 +28,51 @@ import net.matrix.petclinic.repositories.inmemory.VeterinarianRepository;
 @Component
 @SuppressWarnings("javadoc")
 public class PetClinicDataLoader implements CommandLineRunner {
-	public final VeterinarianRepository vetRepository;
-	public final OwnerRepository ownerRepository;
+	private final VeterinarianRepository vetRepository;
+	private final OwnerRepository ownerRepository;
+	PetTypeRepository petTypeRepository;
+	SpecialityRepository specialityRepository;
 
-	/**
-	 * Constructs a new instance of {@link PetClinicDataLoader}.
-	 *
-	 * @param petRepository
-	 * @param ownerRepository
-	 */
-	public PetClinicDataLoader(VeterinarianRepository vetRepository, OwnerRepository ownerRepository) {
+	public PetClinicDataLoader(VeterinarianRepository vetRepository, OwnerRepository ownerRepository,
+			PetTypeRepository petTypeRepository, SpecialityRepository specialityRepository) {
 		this.vetRepository = vetRepository;
 		this.ownerRepository = ownerRepository;
+		this.petTypeRepository = petTypeRepository;
+		this.specialityRepository = specialityRepository;
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
+		if (ownerRepository.findAll().size() > 0) {
+			return;
+		}
+
+		PetType dog = petTypeRepository.save(new PetType("Dog"));
+		PetType cat = petTypeRepository.save(new PetType("Cat"));
+
+		Speciality radiology = new Speciality("Radiology");
+		specialityRepository.save(radiology);
+
+		Speciality surgery = new Speciality("Surgery");
+		specialityRepository.save(surgery);
+
+		Speciality dentistry = new Speciality("dentistry");
+		specialityRepository.save(dentistry);
+
 		Owner owner1 = new Owner();
 		owner1.setFirstName("Michael");
 		owner1.setLastName("Weston");
 		owner1.setAddress("123 Brickerel");
 		owner1.setCity("Miami");
 		owner1.setTelephone("1231231234");
+
+		Pet mikesPet = new Pet();
+		mikesPet.setPetType(dog);
+		mikesPet.setBirthDate(LocalDate.now());
+		mikesPet.setName("mikesPet");
+		mikesPet.setOwner(owner1);
+		owner1.addPet(mikesPet);
+
 		ownerRepository.save(owner1);
 
 		Owner owner2 = new Owner();
@@ -51,6 +81,14 @@ public class PetClinicDataLoader implements CommandLineRunner {
 		owner2.setAddress("123 Brickerel");
 		owner2.setCity("Miami");
 		owner2.setTelephone("1231231234");
+
+		Pet fionasCat = new Pet();
+		fionasCat.setName("fionasCat");
+		fionasCat.setOwner(owner2);
+		fionasCat.setBirthDate(LocalDate.now());
+		fionasCat.setPetType(cat);
+		owner2.addPet(fionasCat);
+
 		ownerRepository.save(owner2);
 
 		System.out.println("Loaded Owners....");
@@ -67,5 +105,4 @@ public class PetClinicDataLoader implements CommandLineRunner {
 
 		System.out.println("Loaded Vets....");
 	}
-
 }

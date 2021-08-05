@@ -1,21 +1,20 @@
 /**
  *
  */
-package net.matrix.petclinic.repositories.inmemory;
+package net.matrix.petclinic.repositories.map;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import net.matrix.petclinic.model.Veterinarian;
 import net.matrix.petclinic.providers.VeterinarianServiceProvider;
 
 /**
- * A cache aware repository implementation of
- * {@link VeterinarianServiceProvider}.
+ * An in memory implementation of {@link VeterinarianServiceProvider}.
  *
  * @author anand.hemadri
  *
  */
-@Service
+@Repository
 public class VeterinarianRepository extends AbstractMapServiceRepository<Veterinarian>
 		implements VeterinarianServiceProvider {
 	private Veterinarian EMPTY_OBJECT = new Veterinarian();

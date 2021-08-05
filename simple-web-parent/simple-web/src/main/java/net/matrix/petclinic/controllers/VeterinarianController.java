@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import net.matrix.petclinic.model.Veterinarian;
-import net.matrix.petclinic.repositories.inmemory.VeterinarianRepository;
+import net.matrix.petclinic.repositories.map.VeterinarianRepository;
 
 /**
  * A controller to handle requests for {@link Veterinarian veterinarians}.
@@ -17,7 +17,7 @@ import net.matrix.petclinic.repositories.inmemory.VeterinarianRepository;
  *
  */
 @Controller
-@RequestMapping("/vets")
+@RequestMapping("/vets.html")
 public class VeterinarianController {
 	private final VeterinarianRepository veterinarianRepository;
 
@@ -36,7 +36,7 @@ public class VeterinarianController {
 	 * @param model
 	 * @return the list of veterinarians
 	 */
-	@RequestMapping({ "", "/", "/vets.html" })
+	@RequestMapping("")
 	public String listVeterinarians(Model model) {
 		model.addAttribute("title", "Vets listing...");
 		model.addAttribute("vets", veterinarianRepository.findAll());

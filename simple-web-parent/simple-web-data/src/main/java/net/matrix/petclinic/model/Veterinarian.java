@@ -5,6 +5,7 @@ package net.matrix.petclinic.model;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -12,11 +13,11 @@ import java.util.Set;
  *
  */
 public class Veterinarian extends Person {
-	private Set<Speciality> specialty;
+	private Set<Speciality> specialty = new HashSet<>();
 
 	/**
 	 * Add a {@link Speciality speciality} to {@link Veterinarian veterinarian}.
-	 * 
+	 *
 	 * @param name the name of the speciality
 	 */
 	public void addSpeciality(String name) {
@@ -25,7 +26,7 @@ public class Veterinarian extends Person {
 
 	/**
 	 * Returns the collection of specialities.
-	 * 
+	 *
 	 * @return the speciality
 	 */
 	public Collection<Speciality> getSpeciality() {

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package net.matrix.petclinic.repositories.inmemory;
+package net.matrix.petclinic.repositories.map;
 
 /**
  * An exception implementation, thrown when a search operation results in entity not found.
