@@ -6,6 +6,7 @@ package net.matrix.petclinic.repositories.map;
 import org.springframework.stereotype.Repository;
 
 import net.matrix.petclinic.model.Owner;
+import net.matrix.petclinic.model.Pet;
 import net.matrix.petclinic.model.PetType;
 import net.matrix.petclinic.providers.OwnerProvider;
 
@@ -46,7 +47,6 @@ public class OwnerRepository extends AbstractMapServiceRepository<Owner> impleme
 
 	@Override
 	public Owner save(Owner data) {
-		Owner savedOwner;
 		if (data != null) {
 			if (data.getPets() != null) {
 				data.getPets().forEach(pet -> {
@@ -60,14 +60,14 @@ public class OwnerRepository extends AbstractMapServiceRepository<Owner> impleme
 					}
 
 					if (pet.isNew()) {
-						petRepository.save(pet);
+						Pet savedPet = petRepository.save(pet);
+						pet.setId(savedPet.getId());
 					}
 				});
 			}
-			savedOwner = super.save(data);
+			return super.save(data);
 		} else {
 			throw new IllegalArgumentException("Cannot save null Owner data.");
 		}
-		return savedOwner;
 	}
 }

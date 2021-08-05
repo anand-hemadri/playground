@@ -18,10 +18,10 @@ public class Veterinarian extends Person {
 	/**
 	 * Add a {@link Speciality speciality} to {@link Veterinarian veterinarian}.
 	 *
-	 * @param name the name of the speciality
+	 * @param speciality the name of the speciality
 	 */
-	public void addSpeciality(String name) {
-		specialty.add(new Speciality(name));
+	public void addSpeciality(Speciality speciality) {
+		specialty.add(speciality);
 	}
 
 	/**

@@ -50,14 +50,9 @@ public class PetClinicDataLoader implements CommandLineRunner {
 		PetType dog = petTypeRepository.save(new PetType("Dog"));
 		PetType cat = petTypeRepository.save(new PetType("Cat"));
 
-		Speciality radiology = new Speciality("Radiology");
-		specialityRepository.save(radiology);
-
-		Speciality surgery = new Speciality("Surgery");
-		specialityRepository.save(surgery);
-
-		Speciality dentistry = new Speciality("dentistry");
-		specialityRepository.save(dentistry);
+		Speciality radiology = specialityRepository.save(new Speciality("Radiology"));
+		Speciality surgery = specialityRepository.save(new Speciality("Surgery"));
+//		Speciality dentistry = specialityRepository.save(new Speciality("dentistry"));
 
 		Owner owner1 = new Owner();
 		owner1.setFirstName("Michael");
@@ -96,11 +91,13 @@ public class PetClinicDataLoader implements CommandLineRunner {
 		Veterinarian vet1 = new Veterinarian();
 		vet1.setFirstName("Sam");
 		vet1.setLastName("Axe");
+		vet1.addSpeciality(radiology);
 		vetRepository.save(vet1);
 
 		Veterinarian vet2 = new Veterinarian();
 		vet2.setFirstName("Jessie");
 		vet2.setLastName("Porter");
+		vet2.addSpeciality(surgery);
 		vetRepository.save(vet2);
 
 		System.out.println("Loaded Vets....");
