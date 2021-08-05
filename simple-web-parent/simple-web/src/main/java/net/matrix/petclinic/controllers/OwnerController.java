@@ -15,7 +15,7 @@ import net.matrix.petclinic.repositories.map.OwnerRepository;
  *
  */
 @Controller
-@RequestMapping({ "owners", "owners.html" })
+@RequestMapping({"owners", "owners.html"})
 public class OwnerController {
 	private final OwnerRepository ownerRepository;
 
