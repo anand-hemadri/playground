@@ -19,6 +19,7 @@ import net.matrix.petclinic.repositories.inmemory.VeterinarianRepository;
  *
  */
 @Component
+@SuppressWarnings("javadoc")
 public class PetClinicDataLoader implements CommandLineRunner {
 	public final VeterinarianRepository vetRepository;
 	public final OwnerRepository ownerRepository;

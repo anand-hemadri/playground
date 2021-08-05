@@ -30,7 +30,7 @@ public class Person extends BaseEntity {
     /**
      * Assigns the first name.
      * 
-     * @param first name
+     * @param firstName first name
      */
     public void setFirstName(String firstName) {
         this.firstName = firstName;

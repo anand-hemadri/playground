@@ -1,18 +1,22 @@
 /**
- * 
+ *
  */
 package net.matrix.bookstore.controllers;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import net.matrix.bookstore.model.Book;
 import net.matrix.bookstore.repositories.BookRepository;
 
 /**
+ * The {@link Book} controller.
+ *
  * @author anand.hemadri
  *
  */
-//@Controller
+@Controller
 public class BookController {
 	private final BookRepository bookRepository;
 
@@ -24,8 +28,14 @@ public class BookController {
 		this.bookRepository = bookRepository;
 	}
 
+	/**
+	 * Returns the list of {@link Book books}.
+	 *
+	 * @param model the model
+	 * @return list of books
+	 */
 	@RequestMapping("/books")
-	public String getBooks(Model model) {
+	public String listBooks(Model model) {
 		model.addAttribute("books", bookRepository.findAll());
 		return "books/list";
 	}

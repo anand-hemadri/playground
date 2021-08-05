@@ -11,7 +11,7 @@ import net.matrix.petclinic.model.Veterinarian;
 import net.matrix.petclinic.repositories.inmemory.VeterinarianRepository;
 
 /**
- * A controller to handle requests for pet {@link Veterinarian veterinarians}.
+ * A controller to handle requests for {@link Veterinarian veterinarians}.
  *
  * @author anand.hemadri
  *
@@ -23,12 +23,20 @@ public class VeterinarianController {
 
 	/**
 	 * Constructs a new instance of {@link VeterinarianController}.
+	 *
+	 * @param veterinarianRepository
 	 */
 	public VeterinarianController(VeterinarianRepository veterinarianRepository) {
 		this.veterinarianRepository = veterinarianRepository;
 	}
 
-	@RequestMapping({ "", "/", "/index", "/index.html" })
+	/**
+	 * Returns the list of {@link Veterinarian veterinarians}.
+	 *
+	 * @param model
+	 * @return the list of veterinarians
+	 */
+	@RequestMapping({ "", "/", "/vets.html" })
 	public String listVeterinarians(Model model) {
 		model.addAttribute("title", "Vets listing...");
 		model.addAttribute("vets", veterinarianRepository.findAll());

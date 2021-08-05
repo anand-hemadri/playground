@@ -6,20 +6,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * The Index page controller.
- * 
+ *
  * @author anand.hemadri
  *
  */
 @Controller
 public class IndexController {
-    /**
-     * Returns the index page template.
-     * 
-     * @return the index
-     */
-    @RequestMapping({"/", "", "index", "index.html"})
-    public String getIndexPage(Model model) {
-        model.addAttribute("header", "Pet Clinic index page");
-        return "index";
-    }
+	/**
+	 * Returns the index page template.
+	 * 
+	 * @param model the model
+	 * @return the index
+	 */
+	@RequestMapping({ "/", "", "index", "index.html" })
+	public String indexPage(Model model) {
+		model.addAttribute("header", "Pet Clinic index page");
+		return "index";
+	}
 }
