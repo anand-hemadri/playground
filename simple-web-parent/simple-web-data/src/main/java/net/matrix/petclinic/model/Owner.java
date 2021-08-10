@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- * Models an {@link Owner Pet Owner} in Pet Clinic application.
+ * Models an {@link Owner pet owner}.
  *
  * @author anand.hemadri
  *

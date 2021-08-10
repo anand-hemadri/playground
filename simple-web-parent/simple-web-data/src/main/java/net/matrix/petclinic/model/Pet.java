@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
- * Models a {@link Pet pet} in Pet Clinic application.
+ * Models a {@link Pet pet}.
  *
  * @author anand.hemadri
  *

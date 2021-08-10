@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * Models a {@link PetType pet type} in Pet Clinic application.
+ * Models a {@link PetType pet type}.
  *
  * @author anand.hemadri
  *
