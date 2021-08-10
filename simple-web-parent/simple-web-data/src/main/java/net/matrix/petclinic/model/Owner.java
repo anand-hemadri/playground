@@ -8,16 +8,32 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 /**
  * Models an {@link Owner Pet Owner} in Pet Clinic application.
  *
  * @author anand.hemadri
  *
  */
+@Entity
+@Table(name = "owners")
 public class Owner extends Person {
+	@Column(name = "address")
 	private String address;
+
+	@Column(name = "city")
 	private String city;
+
+	@Column(name = "telephone")
 	private String telephone;
+
+	@Column(name = "pets")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
 	private Set<Pet> pets = new HashSet<>();
 
 	/**
