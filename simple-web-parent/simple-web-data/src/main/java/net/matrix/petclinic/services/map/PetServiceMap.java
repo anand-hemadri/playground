@@ -1,21 +1,22 @@
 /**
  *
  */
-package net.matrix.petclinic.repositories.map;
+package net.matrix.petclinic.services.map;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import net.matrix.petclinic.model.Pet;
-import net.matrix.petclinic.providers.PetProvider;
+import net.matrix.petclinic.services.EntityNotFoundException;
+import net.matrix.petclinic.services.PetService;
 
 /**
- * An in memory repository implementation of {@link PetProvider}.
+ * An in memory repository implementation of {@link PetService}.
  *
  * @author anand.hemadri
  *
  */
-@Repository
-public class PetRepository extends AbstractMapServiceRepository<Pet> implements PetProvider {
+@Service
+public class PetServiceMap extends AbstractMapService<Pet> implements PetService {
 	private static final Pet EMPTY_OBJECT = new Pet();
 
 	@Override

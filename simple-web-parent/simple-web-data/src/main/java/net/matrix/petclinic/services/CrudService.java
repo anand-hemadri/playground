@@ -1,4 +1,4 @@
-package net.matrix.petclinic.providers;
+package net.matrix.petclinic.services;
 
 import java.util.Set;
 
@@ -11,7 +11,7 @@ import net.matrix.petclinic.model.BaseEntity;
  * @param <T> the entity
  *
  */
-public interface CrudServiceProvider<T extends BaseEntity> {
+public interface CrudService<T extends BaseEntity> {
 	/**
 	 * Delete the record.
 	 * 

@@ -13,10 +13,10 @@ import net.matrix.petclinic.model.Pet;
 import net.matrix.petclinic.model.PetType;
 import net.matrix.petclinic.model.Speciality;
 import net.matrix.petclinic.model.Veterinarian;
-import net.matrix.petclinic.repositories.map.OwnerRepository;
-import net.matrix.petclinic.repositories.map.PetTypeRepository;
-import net.matrix.petclinic.repositories.map.SpecialityRepository;
-import net.matrix.petclinic.repositories.map.VeterinarianRepository;
+import net.matrix.petclinic.services.map.OwnerServiceMap;
+import net.matrix.petclinic.services.map.PetTypeServiceMap;
+import net.matrix.petclinic.services.map.SpecialityServiceMap;
+import net.matrix.petclinic.services.map.VetServiceMap;
 
 /**
  * A boot strap implementation to load test data upon startup of the
@@ -28,13 +28,13 @@ import net.matrix.petclinic.repositories.map.VeterinarianRepository;
 @Component
 @SuppressWarnings("javadoc")
 public class PetClinicDataLoader implements CommandLineRunner {
-	private final VeterinarianRepository vetRepository;
-	private final OwnerRepository ownerRepository;
-	PetTypeRepository petTypeRepository;
-	SpecialityRepository specialityRepository;
+	private final VetServiceMap vetRepository;
+	private final OwnerServiceMap ownerRepository;
+	PetTypeServiceMap petTypeRepository;
+	SpecialityServiceMap specialityRepository;
 
-	public PetClinicDataLoader(VeterinarianRepository vetRepository, OwnerRepository ownerRepository,
-			PetTypeRepository petTypeRepository, SpecialityRepository specialityRepository) {
+	public PetClinicDataLoader(VetServiceMap vetRepository, OwnerServiceMap ownerRepository,
+			PetTypeServiceMap petTypeRepository, SpecialityServiceMap specialityRepository) {
 		this.vetRepository = vetRepository;
 		this.ownerRepository = ownerRepository;
 		this.petTypeRepository = petTypeRepository;

@@ -1,34 +1,34 @@
 /**
  *
  */
-package net.matrix.petclinic.repositories.map;
+package net.matrix.petclinic.services.map;
 
 import java.util.Collection;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import net.matrix.petclinic.model.Speciality;
 import net.matrix.petclinic.model.Veterinarian;
-import net.matrix.petclinic.providers.VeterinarianServiceProvider;
+import net.matrix.petclinic.services.VetService;
+import net.matrix.petclinic.services.map.AbstractMapService;
 
 /**
- * An in memory implementation of {@link VeterinarianServiceProvider}.
+ * An in memory implementation of {@link VetService}.
  *
  * @author anand.hemadri
  *
  */
-@Repository
-public class VeterinarianRepository extends AbstractMapServiceRepository<Veterinarian>
-		implements VeterinarianServiceProvider {
+@Service
+public class VetServiceMap extends AbstractMapService<Veterinarian> implements VetService {
 	private Veterinarian EMPTY_OBJECT = new Veterinarian();
-	private SpecialityRepository specialityRepository;
+	private SpecialityServiceMap specialityRepository;
 
 	/**
-	 * Constructs a new instance of {@link VeterinarianRepository}.
+	 * Constructs a new instance of {@link VetServiceMap}.
 	 *
 	 * @param specialityRepository
 	 */
-	public VeterinarianRepository(SpecialityRepository specialityRepository) {
+	public VetServiceMap(SpecialityServiceMap specialityRepository) {
 		super();
 		this.specialityRepository = specialityRepository;
 	}

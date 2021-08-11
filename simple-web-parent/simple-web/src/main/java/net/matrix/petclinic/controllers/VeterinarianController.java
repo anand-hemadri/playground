@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import net.matrix.petclinic.model.Veterinarian;
-import net.matrix.petclinic.repositories.map.VeterinarianRepository;
+import net.matrix.petclinic.services.map.VetServiceMap;
 
 /**
  * A controller to handle requests for {@link Veterinarian veterinarians}.
@@ -19,15 +19,15 @@ import net.matrix.petclinic.repositories.map.VeterinarianRepository;
 @Controller
 @RequestMapping("/vets.html")
 public class VeterinarianController {
-	private final VeterinarianRepository veterinarianRepository;
+	private final VetServiceMap vetServiceMap;
 
 	/**
 	 * Constructs a new instance of {@link VeterinarianController}.
 	 *
-	 * @param veterinarianRepository
+	 * @param vetServiceMap
 	 */
-	public VeterinarianController(VeterinarianRepository veterinarianRepository) {
-		this.veterinarianRepository = veterinarianRepository;
+	public VeterinarianController(VetServiceMap vetServiceMap) {
+		this.vetServiceMap = vetServiceMap;
 	}
 
 	/**
@@ -39,7 +39,7 @@ public class VeterinarianController {
 	@RequestMapping("")
 	public String listVeterinarians(Model model) {
 		model.addAttribute("title", "Vets listing...");
-		model.addAttribute("vets", veterinarianRepository.findAll());
+		model.addAttribute("vets", vetServiceMap.findAll());
 		return "vets/index";
 	}
 }

@@ -1,35 +1,36 @@
 /**
  *
  */
-package net.matrix.petclinic.repositories.map;
+package net.matrix.petclinic.services.map;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import net.matrix.petclinic.model.Owner;
 import net.matrix.petclinic.model.Pet;
 import net.matrix.petclinic.model.PetType;
-import net.matrix.petclinic.providers.OwnerProvider;
+import net.matrix.petclinic.services.EntityNotFoundException;
+import net.matrix.petclinic.services.OwnerService;
 
 /**
- * An in memory repository implementation of {@link OwnerProvider}.
+ * An in memory repository implementation of {@link OwnerService}.
  *
  * @author anand.hemadri
  *
  */
-@Repository
-public class OwnerRepository extends AbstractMapServiceRepository<Owner> implements OwnerProvider {
+@Service
+public class OwnerServiceMap extends AbstractMapService<Owner> implements OwnerService {
 	private static final Owner EMPTY_OBJECT = new Owner();
 
-	private final PetTypeRepository petTypeRepository;
-	private final PetRepository petRepository;
+	private final PetTypeServiceMap petTypeRepository;
+	private final PetServiceMap petRepository;
 
 	/**
-	 * Constructs a new instance of {@link OwnerRepository}.
+	 * Constructs a new instance of {@link OwnerServiceMap}.
 	 *
 	 * @param petTypeRepository the {PetTypeRepository pet type repository}
 	 * @param petRepository     the {PetRepository pet repository}
 	 */
-	public OwnerRepository(PetTypeRepository petTypeRepository, PetRepository petRepository) {
+	public OwnerServiceMap(PetTypeServiceMap petTypeRepository, PetServiceMap petRepository) {
 		this.petTypeRepository = petTypeRepository;
 		this.petRepository = petRepository;
 	}
