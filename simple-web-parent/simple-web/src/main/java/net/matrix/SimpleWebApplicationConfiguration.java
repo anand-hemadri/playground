@@ -1,14 +1,14 @@
-package net.matrix.simplewebapp;
+package net.matrix;
 
 import org.springframework.context.annotation.Configuration;
 
 /**
- * A {@link SimplewebappConfiguration configuration} for
- * {@link SimplewebappApplication simple web application}.
+ * A {@link SimpleWebApplicationConfiguration configuration} for
+ * {@link SimpleWebApplication simple web application}.
  *
  * @author anand.hemadri
  *
  */
 @Configuration
-public class SimplewebappConfiguration {
+public class SimpleWebApplicationConfiguration {
 }

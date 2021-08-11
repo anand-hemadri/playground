@@ -1,17 +1,15 @@
-package net.matrix.simplewebapp;
+package net.matrix;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 
 /**
- * The main class for {@link SimplewebappApplication simple web application}.
+ * The main class for {@link SimpleWebApplication simple web application}.
  *
  * @author anand.hemadri
  */
 @SpringBootApplication
-@ComponentScan(basePackages = { "net.matrix.bookstore", "net.matrix.petclinic" })
-public class SimplewebappApplication {
+public class SimpleWebApplication {
 
 	/**
 	 * Main method.
@@ -19,7 +17,7 @@ public class SimplewebappApplication {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		SpringApplication.run(SimplewebappApplication.class, args);
+		SpringApplication.run(SimpleWebApplication.class, args);
 	}
 
 }
