@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import net.matrix.petclinic.model.Owner;
 import net.matrix.petclinic.model.Pet;
-import net.matrix.petclinic.services.map.OwnerServiceMap;
+import net.matrix.petclinic.services.OwnerService;
 
 /**
  * A controller to handle requests for {@link Pet pet} {@link Owner owners}.
@@ -17,14 +17,14 @@ import net.matrix.petclinic.services.map.OwnerServiceMap;
 @Controller
 @RequestMapping({ "owners", "owners.html" })
 public class OwnerController {
-	private final OwnerServiceMap ownerService;
+	private final OwnerService ownerService;
 
 	/**
 	 * Constructs a new instance of {@link OwnerController}
 	 *
 	 * @param ownerService
 	 */
-	public OwnerController(OwnerServiceMap ownerService) {
+	public OwnerController(OwnerService ownerService) {
 		this.ownerService = ownerService;
 	}
 
