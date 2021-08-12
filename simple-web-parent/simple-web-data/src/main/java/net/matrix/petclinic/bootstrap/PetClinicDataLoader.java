@@ -13,10 +13,12 @@ import net.matrix.petclinic.model.Pet;
 import net.matrix.petclinic.model.PetType;
 import net.matrix.petclinic.model.Speciality;
 import net.matrix.petclinic.model.Veterinarian;
+import net.matrix.petclinic.model.Visit;
 import net.matrix.petclinic.services.OwnerService;
 import net.matrix.petclinic.services.PetTypeService;
 import net.matrix.petclinic.services.SpecialityService;
 import net.matrix.petclinic.services.VetService;
+import net.matrix.petclinic.services.VisitService;
 
 /**
  * A boot strap implementation to load test data upon startup of the
@@ -30,15 +32,17 @@ import net.matrix.petclinic.services.VetService;
 public class PetClinicDataLoader implements CommandLineRunner {
 	private final VetService vetService;
 	private final OwnerService ownerService;
-	PetTypeService petTypeService;
-	SpecialityService specialityService;
+	private final PetTypeService petTypeService;
+	private final SpecialityService specialityService;
+	private final VisitService visitService;
 
 	public PetClinicDataLoader(VetService vetService, OwnerService ownerService, PetTypeService petTypeService,
-			SpecialityService specialityService) {
+			SpecialityService specialityService, VisitService visitService) {
 		this.vetService = vetService;
 		this.ownerService = ownerService;
 		this.petTypeService = petTypeService;
 		this.specialityService = specialityService;
+		this.visitService = visitService;
 	}
 
 	@Override
@@ -101,5 +105,12 @@ public class PetClinicDataLoader implements CommandLineRunner {
 		vetService.save(vet2);
 
 		System.out.println("Loaded Vets....");
+
+		Visit catVisit = new Visit();
+		catVisit.setPet(fionasCat);
+		catVisit.setVisitDate(LocalDate.now());
+		catVisit.setDescription("Sneezy Cat");
+
+		System.out.println("Loaded visit...");
 	}
 }
