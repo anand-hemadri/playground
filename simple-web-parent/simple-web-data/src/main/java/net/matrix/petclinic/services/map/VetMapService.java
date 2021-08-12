@@ -12,7 +12,7 @@ import net.matrix.petclinic.model.Veterinarian;
 import net.matrix.petclinic.services.VetService;
 
 /**
- * An in memory implementation of {@link VetService}.
+ * An default implementation of {@link VetService}.
  *
  * @author anand.hemadri
  *

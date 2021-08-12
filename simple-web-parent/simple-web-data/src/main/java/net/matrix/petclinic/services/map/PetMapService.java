@@ -10,7 +10,7 @@ import net.matrix.petclinic.services.EntityNotFoundException;
 import net.matrix.petclinic.services.PetService;
 
 /**
- * An in memory repository implementation of {@link PetService}.
+ * An default repository implementation of {@link PetService}.
  *
  * @author anand.hemadri
  *

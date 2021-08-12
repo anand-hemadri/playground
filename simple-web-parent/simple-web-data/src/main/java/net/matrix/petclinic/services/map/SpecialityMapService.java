@@ -6,7 +6,7 @@ import net.matrix.petclinic.model.Speciality;
 import net.matrix.petclinic.services.SpecialityService;
 
 /**
- * An in memory implementation of {@link SpecialityService}.
+ * An default implementation of {@link SpecialityService}.
  *
  * @author anand.hemadri
  *

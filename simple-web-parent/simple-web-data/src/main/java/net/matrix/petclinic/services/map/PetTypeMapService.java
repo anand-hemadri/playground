@@ -9,7 +9,7 @@ import net.matrix.petclinic.model.PetType;
 import net.matrix.petclinic.services.PetTypeService;
 
 /**
- * An in memory implementation of {@link PetTypeService}.
+ * An default implementation of {@link PetTypeService}.
  *
  * @author anand.hemadri
  */

@@ -3,7 +3,7 @@ package net.matrix.petclinic.services;
 import net.matrix.petclinic.model.Owner;
 
 /**
- * An implementation of {@link CrudService} for {@link Owner}.
+ *
  *
  * @author anand.hemadri
  *
