@@ -14,5 +14,11 @@ import net.matrix.petclinic.model.Owner;
  *
  */
 public interface OwnerRepository extends CrudRepository<Owner, Long> {
-
+	/**
+	 * Searches for a {@link Owner owner} by last name.
+	 *
+	 * @param lastName
+	 * @return the owner
+	 */
+	public Owner getByLastName(String lastName);
 }

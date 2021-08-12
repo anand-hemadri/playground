@@ -13,10 +13,10 @@ import net.matrix.petclinic.model.Pet;
 import net.matrix.petclinic.model.PetType;
 import net.matrix.petclinic.model.Speciality;
 import net.matrix.petclinic.model.Veterinarian;
-import net.matrix.petclinic.services.map.OwnerServiceMap;
-import net.matrix.petclinic.services.map.PetTypeServiceMap;
-import net.matrix.petclinic.services.map.SpecialityServiceMap;
-import net.matrix.petclinic.services.map.VetServiceMap;
+import net.matrix.petclinic.services.OwnerService;
+import net.matrix.petclinic.services.PetTypeService;
+import net.matrix.petclinic.services.SpecialityService;
+import net.matrix.petclinic.services.VetService;
 
 /**
  * A boot strap implementation to load test data upon startup of the
@@ -28,30 +28,30 @@ import net.matrix.petclinic.services.map.VetServiceMap;
 @Component
 @SuppressWarnings("javadoc")
 public class PetClinicDataLoader implements CommandLineRunner {
-	private final VetServiceMap vetRepository;
-	private final OwnerServiceMap ownerRepository;
-	PetTypeServiceMap petTypeRepository;
-	SpecialityServiceMap specialityRepository;
+	private final VetService vetService;
+	private final OwnerService ownerService;
+	PetTypeService petTypeService;
+	SpecialityService specialityService;
 
-	public PetClinicDataLoader(VetServiceMap vetRepository, OwnerServiceMap ownerRepository,
-			PetTypeServiceMap petTypeRepository, SpecialityServiceMap specialityRepository) {
-		this.vetRepository = vetRepository;
-		this.ownerRepository = ownerRepository;
-		this.petTypeRepository = petTypeRepository;
-		this.specialityRepository = specialityRepository;
+	public PetClinicDataLoader(VetService vetService, OwnerService ownerService, PetTypeService petTypeService,
+			SpecialityService specialityService) {
+		this.vetService = vetService;
+		this.ownerService = ownerService;
+		this.petTypeService = petTypeService;
+		this.specialityService = specialityService;
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		if (ownerRepository.findAll().size() > 0) {
+		if (ownerService.findAll().size() > 0) {
 			return;
 		}
 
-		PetType dog = petTypeRepository.save(new PetType("Dog"));
-		PetType cat = petTypeRepository.save(new PetType("Cat"));
+		PetType dog = petTypeService.save(new PetType("Dog"));
+		PetType cat = petTypeService.save(new PetType("Cat"));
 
-		Speciality radiology = specialityRepository.save(new Speciality("Radiology"));
-		Speciality surgery = specialityRepository.save(new Speciality("Surgery"));
+		Speciality radiology = specialityService.save(new Speciality("Radiology"));
+		Speciality surgery = specialityService.save(new Speciality("Surgery"));
 //		Speciality dentistry = specialityRepository.save(new Speciality("dentistry"));
 
 		Owner owner1 = new Owner();
@@ -68,7 +68,7 @@ public class PetClinicDataLoader implements CommandLineRunner {
 		mikesPet.setOwner(owner1);
 		owner1.addPet(mikesPet);
 
-		ownerRepository.save(owner1);
+		ownerService.save(owner1);
 
 		Owner owner2 = new Owner();
 		owner2.setFirstName("Fiona");
@@ -84,7 +84,7 @@ public class PetClinicDataLoader implements CommandLineRunner {
 		fionasCat.setPetType(cat);
 		owner2.addPet(fionasCat);
 
-		ownerRepository.save(owner2);
+		ownerService.save(owner2);
 
 		System.out.println("Loaded Owners....");
 
@@ -92,13 +92,13 @@ public class PetClinicDataLoader implements CommandLineRunner {
 		vet1.setFirstName("Sam");
 		vet1.setLastName("Axe");
 		vet1.addSpeciality(radiology);
-		vetRepository.save(vet1);
+		vetService.save(vet1);
 
 		Veterinarian vet2 = new Veterinarian();
 		vet2.setFirstName("Jessie");
 		vet2.setLastName("Porter");
 		vet2.addSpeciality(surgery);
-		vetRepository.save(vet2);
+		vetService.save(vet2);
 
 		System.out.println("Loaded Vets....");
 	}

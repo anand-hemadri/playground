@@ -18,19 +18,19 @@ import net.matrix.petclinic.services.OwnerService;
  *
  */
 @Service
-public class OwnerServiceMap extends AbstractMapService<Owner> implements OwnerService {
+public class OwnerMapService extends AbstractMapService<Owner> implements OwnerService {
 	private static final Owner EMPTY_OBJECT = new Owner();
 
-	private final PetTypeServiceMap petTypeRepository;
-	private final PetServiceMap petRepository;
+	private final PetTypeMapService petTypeRepository;
+	private final PetMapService petRepository;
 
 	/**
-	 * Constructs a new instance of {@link OwnerServiceMap}.
+	 * Constructs a new instance of {@link OwnerMapService}.
 	 *
 	 * @param petTypeRepository the {PetTypeRepository pet type repository}
 	 * @param petRepository     the {PetRepository pet repository}
 	 */
-	public OwnerServiceMap(PetTypeServiceMap petTypeRepository, PetServiceMap petRepository) {
+	public OwnerMapService(PetTypeMapService petTypeRepository, PetMapService petRepository) {
 		this.petTypeRepository = petTypeRepository;
 		this.petRepository = petRepository;
 	}

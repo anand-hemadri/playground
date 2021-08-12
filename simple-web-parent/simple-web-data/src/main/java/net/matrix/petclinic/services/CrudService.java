@@ -14,29 +14,30 @@ import net.matrix.petclinic.model.BaseEntity;
 public interface CrudService<T extends BaseEntity> {
 	/**
 	 * Delete the record.
-	 * 
+	 *
 	 * @param data the record
 	 */
 	void delete(T data);
 
 	/**
 	 * Find all records.
-	 * 
+	 *
 	 * @return all records.
 	 */
 	Set<T> findAll();
 
 	/**
 	 * Find a record by id.
-	 * 
+	 *
 	 * @param id
 	 * @return the record.
+	 * @throws EntityNotFoundException when a matching record is not found
 	 */
-	T findById(Long id);
+	T findById(Long id) throws EntityNotFoundException;
 
 	/**
 	 * Save the record.
-	 * 
+	 *
 	 * @param data the record
 	 * @return the record
 	 */

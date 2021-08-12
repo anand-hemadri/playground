@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import net.matrix.petclinic.model.Speciality;
 import net.matrix.petclinic.model.Veterinarian;
 import net.matrix.petclinic.services.VetService;
-import net.matrix.petclinic.services.map.AbstractMapService;
 
 /**
  * An in memory implementation of {@link VetService}.
@@ -19,16 +18,16 @@ import net.matrix.petclinic.services.map.AbstractMapService;
  *
  */
 @Service
-public class VetServiceMap extends AbstractMapService<Veterinarian> implements VetService {
+public class VetMapService extends AbstractMapService<Veterinarian> implements VetService {
 	private Veterinarian EMPTY_OBJECT = new Veterinarian();
-	private SpecialityServiceMap specialityRepository;
+	private SpecialityMapService specialityRepository;
 
 	/**
-	 * Constructs a new instance of {@link VetServiceMap}.
+	 * Constructs a new instance of {@link VetMapService}.
 	 *
 	 * @param specialityRepository
 	 */
-	public VetServiceMap(SpecialityServiceMap specialityRepository) {
+	public VetMapService(SpecialityMapService specialityRepository) {
 		super();
 		this.specialityRepository = specialityRepository;
 	}

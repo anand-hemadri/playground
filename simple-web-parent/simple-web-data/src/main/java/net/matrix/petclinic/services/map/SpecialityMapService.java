@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 
 import net.matrix.petclinic.model.Speciality;
 import net.matrix.petclinic.services.SpecialityService;
-import net.matrix.petclinic.services.map.AbstractMapService;
 
 /**
  * An in memory implementation of {@link SpecialityService}.
@@ -13,7 +12,7 @@ import net.matrix.petclinic.services.map.AbstractMapService;
  *
  */
 @Service
-public class SpecialityServiceMap extends AbstractMapService<Speciality> implements SpecialityService {
+public class SpecialityMapService extends AbstractMapService<Speciality> implements SpecialityService {
 	private final Speciality EMPTY_OBJECT = new Speciality("");
 
 	@Override

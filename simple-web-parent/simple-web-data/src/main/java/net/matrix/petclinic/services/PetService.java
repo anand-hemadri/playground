@@ -14,7 +14,7 @@ import net.matrix.petclinic.model.Pet;
 public interface PetService extends CrudService<Pet> {
 	/**
 	 * Search by name of the {@link Pet}.
-	 * 
+	 *
 	 * @param name the name
 	 * @return the pet
 	 * @throws EntityNotFoundException when no matching {@link Pet pet} exists.
