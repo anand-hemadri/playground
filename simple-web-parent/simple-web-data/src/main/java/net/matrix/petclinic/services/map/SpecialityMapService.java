@@ -13,11 +13,10 @@ import net.matrix.petclinic.services.SpecialityService;
  */
 @Service
 public class SpecialityMapService extends AbstractMapService<Speciality> implements SpecialityService {
-	private final Speciality EMPTY_OBJECT = new Speciality("");
-
-	@Override
-	Speciality emptyObject() {
-		return EMPTY_OBJECT;
+	/**
+	 * Constructs a new instance of {@link SpecialityMapService}.
+	 */
+	public SpecialityMapService() {
+		super(new Speciality());
 	}
-
 }

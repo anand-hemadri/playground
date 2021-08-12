@@ -17,11 +17,11 @@ import net.matrix.petclinic.services.PetService;
  */
 @Service
 public class PetMapService extends AbstractMapService<Pet> implements PetService {
-	private static final Pet EMPTY_OBJECT = new Pet();
-
-	@Override
-	Pet emptyObject() {
-		return EMPTY_OBJECT;
+	/**
+	 * Constructs a new instance of {@link PetMapService}.
+	 */
+	public PetMapService() {
+		super(new Pet());
 	}
 
 	@Override

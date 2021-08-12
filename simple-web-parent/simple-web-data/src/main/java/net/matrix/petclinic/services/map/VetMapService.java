@@ -19,7 +19,6 @@ import net.matrix.petclinic.services.VetService;
  */
 @Service
 public class VetMapService extends AbstractMapService<Veterinarian> implements VetService {
-	private Veterinarian EMPTY_OBJECT = new Veterinarian();
 	private SpecialityMapService specialityRepository;
 
 	/**
@@ -28,13 +27,8 @@ public class VetMapService extends AbstractMapService<Veterinarian> implements V
 	 * @param specialityRepository
 	 */
 	public VetMapService(SpecialityMapService specialityRepository) {
-		super();
+		super(new Veterinarian());
 		this.specialityRepository = specialityRepository;
-	}
-
-	@Override
-	Veterinarian emptyObject() {
-		return EMPTY_OBJECT;
 	}
 
 	@Override

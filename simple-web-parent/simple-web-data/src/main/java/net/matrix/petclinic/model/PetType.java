@@ -14,6 +14,13 @@ import javax.persistence.Table;
 public class PetType extends NamedEntity {
 	/**
 	 * Constructs a new instance of {@link PetType}.
+	 */
+	public PetType() {
+		this("");
+	}
+
+	/**
+	 * Constructs a new instance of {@link PetType}.
 	 *
 	 * @param name
 	 */

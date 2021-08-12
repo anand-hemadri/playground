@@ -10,6 +10,12 @@ import javax.persistence.Entity;
  */
 @Entity
 public class Speciality extends NamedEntity {
+	/**
+	 * Constructs a new instance of {@link Speciality}.
+	 */
+	public Speciality() {
+		this("");
+	}
 
 	/**
 	 * Constructs a new instance of {@link Speciality}.
