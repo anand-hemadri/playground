@@ -6,7 +6,7 @@ import net.matrix.petclinic.services.OwnerService;
 import net.matrix.petclinic.services.VetService;
 
 /**
- * A Jpa implementaiton of {@link OwnerService}.
+ * A Jpa implementation of {@link OwnerService}.
  *
  * @author anand.hemadri
  *
