@@ -3,6 +3,9 @@
  */
 package net.matrix.petclinic.services.jpa;
 
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
+
 import net.matrix.petclinic.model.Speciality;
 import net.matrix.petclinic.repositories.SpecialityRepository;
 import net.matrix.petclinic.services.SpecialityService;
@@ -13,6 +16,8 @@ import net.matrix.petclinic.services.SpecialityService;
  * @author anand.hemadri
  *
  */
+@Service
+@Profile("springdatajpa")
 public class SpecialityJpaService extends AbstractJpaService<Speciality, SpecialityRepository>
 		implements SpecialityService {
 	/**
