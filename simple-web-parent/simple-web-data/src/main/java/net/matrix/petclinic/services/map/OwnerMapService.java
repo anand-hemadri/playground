@@ -19,25 +19,19 @@ import net.matrix.petclinic.services.OwnerService;
  */
 @Service
 public class OwnerMapService extends AbstractMapService<Owner> implements OwnerService {
-	private static final Owner EMPTY_OBJECT = new Owner();
-
-	private final PetTypeMapService petTypeRepository;
-	private final PetMapService petRepository;
+	private final PetTypeMapService petTypeService;
+	private final PetMapService petService;
 
 	/**
 	 * Constructs a new instance of {@link OwnerMapService}.
 	 *
-	 * @param petTypeRepository the {PetTypeRepository pet type repository}
-	 * @param petRepository     the {PetRepository pet repository}
+	 * @param petTypeService the {PetTypeService pet type repository}
+	 * @param petService     the {PetService pet repository}
 	 */
-	public OwnerMapService(PetTypeMapService petTypeRepository, PetMapService petRepository) {
-		this.petTypeRepository = petTypeRepository;
-		this.petRepository = petRepository;
-	}
-
-	@Override
-	Owner emptyObject() {
-		return EMPTY_OBJECT;
+	public OwnerMapService(PetTypeMapService petTypeService, PetMapService petService) {
+		super(new Owner());
+		this.petTypeService = petTypeService;
+		this.petService = petService;
 	}
 
 	@Override
@@ -54,14 +48,14 @@ public class OwnerMapService extends AbstractMapService<Owner> implements OwnerS
 					PetType petType = pet.getPetType();
 					if (petType != null) {
 						if (petType.isNew()) {
-							pet.setPetType(petTypeRepository.save(petType));
+							pet.setPetType(petTypeService.save(petType));
 						}
 					} else {
 						throw new IllegalArgumentException("Pet type is required.");
 					}
 
 					if (pet.isNew()) {
-						Pet savedPet = petRepository.save(pet);
+						Pet savedPet = petService.save(pet);
 						pet.setId(savedPet.getId());
 					}
 				});
