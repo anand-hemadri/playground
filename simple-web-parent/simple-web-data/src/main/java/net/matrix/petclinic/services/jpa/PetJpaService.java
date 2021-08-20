@@ -28,7 +28,6 @@ public class PetJpaService extends AbstractJpaService<Pet, PetRepository> implem
 	 */
 	public PetJpaService(PetRepository repository) {
 		super(repository);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

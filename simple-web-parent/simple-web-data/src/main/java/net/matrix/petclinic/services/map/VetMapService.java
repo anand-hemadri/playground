@@ -5,6 +5,7 @@ package net.matrix.petclinic.services.map;
 
 import java.util.Collection;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import net.matrix.petclinic.model.Speciality;
@@ -18,6 +19,7 @@ import net.matrix.petclinic.services.VetService;
  *
  */
 @Service
+@Profile({ "default", "map" })
 public class VetMapService extends AbstractMapService<Veterinarian> implements VetService {
 	private SpecialityMapService specialityRepository;
 

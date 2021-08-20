@@ -50,6 +50,8 @@ public class PetClinicDataLoader implements CommandLineRunner {
 		if (ownerService.findAll().size() > 0) {
 			return;
 		}
+		System.out
+				.println("=======>>> Active Profile:" + System.getProperty("spring.profiles.active") + " <<<<=======");
 
 		PetType dog = petTypeService.save(new PetType("Dog"));
 		PetType cat = petTypeService.save(new PetType("Cat"));
@@ -110,6 +112,7 @@ public class PetClinicDataLoader implements CommandLineRunner {
 		catVisit.setPet(fionasCat);
 		catVisit.setVisitDate(LocalDate.now());
 		catVisit.setDescription("Sneezy Cat");
+		visitService.save(catVisit);
 
 		System.out.println("Loaded visit...");
 	}

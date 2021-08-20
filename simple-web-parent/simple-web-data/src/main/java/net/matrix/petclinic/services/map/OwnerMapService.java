@@ -3,6 +3,7 @@
  */
 package net.matrix.petclinic.services.map;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import net.matrix.petclinic.model.Owner;
@@ -18,6 +19,7 @@ import net.matrix.petclinic.services.OwnerService;
  *
  */
 @Service
+@Profile({ "default", "map" })
 public class OwnerMapService extends AbstractMapService<Owner> implements OwnerService {
 	private final PetTypeMapService petTypeService;
 	private final PetMapService petService;

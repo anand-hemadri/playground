@@ -3,6 +3,7 @@
  */
 package net.matrix.petclinic.services.map;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import net.matrix.petclinic.model.Visit;
@@ -15,6 +16,7 @@ import net.matrix.petclinic.services.VisitService;
  *
  */
 @Service
+@Profile({ "default", "map" })
 public class VisitMapService extends AbstractMapService<Visit> implements VisitService {
 	/**
 	 * Constructs a new instance of {@link VisitMapService}.
