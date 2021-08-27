@@ -15,28 +15,38 @@ import net.matrix.petclinic.services.OwnerService;
  *
  */
 @Controller
-@RequestMapping({ "owners", "owners.html" })
+@RequestMapping({"owners", "owners.html"})
 public class OwnerController {
-	private final OwnerService ownerService;
+    private final OwnerService ownerService;
 
-	/**
-	 * Constructs a new instance of {@link OwnerController}
-	 *
-	 * @param ownerService
-	 */
-	public OwnerController(OwnerService ownerService) {
-		this.ownerService = ownerService;
-	}
+    /**
+     * Constructs a new instance of {@link OwnerController}
+     *
+     * @param ownerService
+     */
+    public OwnerController(OwnerService ownerService) {
+        this.ownerService = ownerService;
+    }
 
-	/**
-	 * Return the list of {@link Owner owners}.
-	 *
-	 * @param model the model
-	 * @return the list of owners
-	 */
-	@RequestMapping("")
-	public String listOwners(Model model) {
-		model.addAttribute("owners", ownerService.findAll());
-		return "owners/index";
-	}
+    /**
+     * Searches the list of owners.
+     *
+     * @return the result page
+     */
+    @RequestMapping("/find")
+    public String findOwners() {
+        return "notimplemented";
+    }
+
+    /**
+     * Return the list of {@link Owner owners}.
+     *
+     * @param model the model
+     * @return the result page
+     */
+    @RequestMapping("")
+    public String listOwners(Model model) {
+        model.addAttribute("owners", ownerService.findAll());
+        return "owners/index";
+    }
 }
