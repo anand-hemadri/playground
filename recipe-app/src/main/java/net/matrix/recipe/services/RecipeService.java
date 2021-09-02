@@ -11,10 +11,19 @@ import net.matrix.recipe.models.Recipe;
  *
  */
 public interface RecipeService {
-	/**
-	 * Returns a {@link List list} of {@link Recipe recipes}.
-	 *
-	 * @return list of recipes
-	 */
-	public List<Recipe> listAllRecipe();
+    /**
+     * Returns a {@link Recipe recipe} identified by id.
+     *
+     * @param id the recipe id
+     *
+     * @return the recipe
+     */
+    public Recipe findById(Long id);
+
+    /**
+     * Returns a {@link List list} of {@link Recipe recipes}.
+     *
+     * @return list of recipes
+     */
+    public List<Recipe> listAllRecipe();
 }

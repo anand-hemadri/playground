@@ -3,12 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Recipe Home</title>
-<!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" 
-	rel="stylesheet" 
-	integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" 
-	integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+	<link  th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}"></link>    
+    <script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
+    <script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.min.js}"></script>
 </head>
 <body>
 <div class="container-fluid" style="margin-top: 20px">
@@ -21,14 +18,15 @@
 						<table class="table table-hover">
 							<thead class="thead-inverse">		
 								<tr>
-									<th:block th:each="column : ${columns}">
-										<th th:text="${column}">defaultColumn</th>
-									</th:block>
+									<th>ID</th>
+									<th>Description</th>
 								</tr>
 							</thead>
 							<tbody>
+								<!--/*@thymesVar id="recipe" type="net.matrix.recipe.models.Recipe"*/-->
+							
 								<tr th:each="recipe: ${recipes}">
-									<td th:text="${recipe.id}">recipeId</td>
+									<td><a href="#" th:href="@{'/recipe/show/'+ ${recipe.id}}" th:text="${recipe.id}">View</a></td>
 									<td th:text="${recipe.description}">recipeDescription</td>
 								</tr>
 							</tbody>
