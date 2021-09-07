@@ -1,100 +1,50 @@
 /**
  *
  */
-package net.matrix.recipe.models;
+package net.matrix.recipe.command;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import net.matrix.recipe.models.Difficulty;
+import net.matrix.recipe.models.Recipe;
 
 /**
- * Models the recipe entity.
+ * Backing bean for {@link Recipe recipe}.
  *
  * @author anand.hemadri
  *
  */
-@Entity
-public class Recipe {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class RecipeCommand {
     private Long id;
-    @ManyToMany
-    @JoinTable(name = "recipe_category", joinColumns = @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private Set<Category> categories = new HashSet<>();
+    private Set<CategoryCommand> categories = new HashSet<>();
     private Integer cookTime;
     private String description;
-
-    @Enumerated(value = EnumType.STRING)
     private Difficulty difficulty;
-    @Lob
     private String directions;
-    @OneToOne(cascade = CascadeType.ALL)
-    private Notes notes;
+    private NotesCommand notes;
     private Integer preperationTime;
     private Integer servings;
-
     private String source;
-
     private String url;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
-    private Set<Ingredient> ingredients = new HashSet<>();
-
-    @Lob
+    private Set<IngredientCommand> ingredients = new HashSet<>();
     private Byte[] image;
 
     /**
-     * Constructs a new instance of {@link Recipe recipe}.
+     * Constructs a new instance of {@link RecipeCommand}.
      */
-    public Recipe() {
+    public RecipeCommand() {}
 
-    }
-
-    /**
-     * Add an {@link Category category} to the {@link Recipe recipe}.
-     *
-     * @param category the categories
-     * @return Recipe
-     */
-    public Recipe addCategory(Category category) {
-        categories.add(category);
-        return this;
-    }
-
-    /**
-     * Add an {@link Ingredient ingredient} to the {@link Recipe recipe}.
-     *
-     * @param ingredient the ingredients
-     * @return the {@link Recipe recipe}
-     */
-    public Recipe addIngredient(Ingredient ingredient) {
-        ingredient.setRecipe(this);
-        ingredients.add(ingredient);
-        return this;
-    }
 
     /**
      * Returns the categories.
      *
      * @return the categories
      */
-    public Set<Category> getCategories() {
-        return Collections.unmodifiableSet(categories);
+    public Set<CategoryCommand> getCategories() {
+        return categories;
     }
+
 
     /**
      * Returns the cookTime.
@@ -105,6 +55,7 @@ public class Recipe {
         return cookTime;
     }
 
+
     /**
      * Returns the description.
      *
@@ -113,6 +64,7 @@ public class Recipe {
     public String getDescription() {
         return description;
     }
+
 
     /**
      * Returns the difficulty.
@@ -123,6 +75,7 @@ public class Recipe {
         return difficulty;
     }
 
+
     /**
      * Returns the directions.
      *
@@ -131,6 +84,7 @@ public class Recipe {
     public String getDirections() {
         return directions;
     }
+
 
     /**
      * Returns the id.
@@ -141,6 +95,7 @@ public class Recipe {
         return id;
     }
 
+
     /**
      * Returns the image.
      *
@@ -150,23 +105,26 @@ public class Recipe {
         return image;
     }
 
+
     /**
      * Returns the ingredients.
      *
      * @return the ingredients
      */
-    public Set<Ingredient> getIngredients() {
-        return Collections.unmodifiableSet(ingredients);
+    public Set<IngredientCommand> getIngredients() {
+        return ingredients;
     }
+
 
     /**
      * Returns the notes.
      *
      * @return the notes
      */
-    public Notes getNotes() {
+    public NotesCommand getNotes() {
         return notes;
     }
+
 
     /**
      * Returns the preperationTime.
@@ -177,6 +135,7 @@ public class Recipe {
         return preperationTime;
     }
 
+
     /**
      * Returns the servings.
      *
@@ -185,6 +144,7 @@ public class Recipe {
     public Integer getServings() {
         return servings;
     }
+
 
     /**
      * Returns the source.
@@ -195,6 +155,7 @@ public class Recipe {
         return source;
     }
 
+
     /**
      * Returns the url.
      *
@@ -203,6 +164,17 @@ public class Recipe {
     public String getUrl() {
         return url;
     }
+
+
+    /**
+     * Assigns the categories.
+     *
+     * @param categories the categories
+     */
+    public void setCategories(Set<CategoryCommand> categories) {
+        this.categories = categories;
+    }
+
 
     /**
      * Assigns the cookTime.
@@ -213,6 +185,7 @@ public class Recipe {
         this.cookTime = cookTime;
     }
 
+
     /**
      * Assigns the description.
      *
@@ -221,6 +194,7 @@ public class Recipe {
     public void setDescription(String description) {
         this.description = description;
     }
+
 
     /**
      * Assigns the difficulty.
@@ -231,6 +205,7 @@ public class Recipe {
         this.difficulty = difficulty;
     }
 
+
     /**
      * Assigns the directions.
      *
@@ -239,6 +214,7 @@ public class Recipe {
     public void setDirections(String directions) {
         this.directions = directions;
     }
+
 
     /**
      * Assigns the id.
@@ -249,6 +225,7 @@ public class Recipe {
         this.id = id;
     }
 
+
     /**
      * Assigns the image.
      *
@@ -258,17 +235,26 @@ public class Recipe {
         this.image = image;
     }
 
+
+    /**
+     * Assigns the ingredients.
+     *
+     * @param ingredients the ingredients
+     */
+    public void setIngredients(Set<IngredientCommand> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+
     /**
      * Assigns the notes.
      *
      * @param notes the notes
      */
-    public void setNotes(Notes notes) {
-        if (notes != null) {
-            this.notes = notes;
-            notes.setRecipe(this);
-        }
+    public void setNotes(NotesCommand notes) {
+        this.notes = notes;
     }
+
 
     /**
      * Assigns the preperationTime.
@@ -279,6 +265,7 @@ public class Recipe {
         this.preperationTime = preperationTime;
     }
 
+
     /**
      * Assigns the servings.
      *
@@ -288,6 +275,7 @@ public class Recipe {
         this.servings = servings;
     }
 
+
     /**
      * Assigns the source.
      *
@@ -296,6 +284,7 @@ public class Recipe {
     public void setSource(String source) {
         this.source = source;
     }
+
 
     /**
      * Assigns the url.
