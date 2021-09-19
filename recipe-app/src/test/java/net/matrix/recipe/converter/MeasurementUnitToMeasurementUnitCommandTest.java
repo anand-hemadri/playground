@@ -9,12 +9,12 @@ import org.junit.jupiter.api.Test;
 import net.matrix.recipe.command.MeasurementUnitCommand;
 import net.matrix.recipe.models.MeasurementUnit;
 
-class MeasurementUnitCommandToMeasurementUnitTest {
-    final MeasurementUnitCommandToMeasurementUnit converter = new MeasurementUnitCommandToMeasurementUnit();
+class MeasurementUnitToMeasurementUnitCommandTest {
+    final MeasurementUnitToMeasurementUnitCommand converter = new MeasurementUnitToMeasurementUnitCommand();
 
     @Test
     final void tesConvert_EmptyValue() {
-        assertNotNull(converter.convert(new MeasurementUnitCommand()));
+        assertNotNull(converter.convert(new MeasurementUnit()));
     }
 
     @Test
@@ -24,12 +24,12 @@ class MeasurementUnitCommandToMeasurementUnitTest {
 
     @Test
     final void testConvert() {
-        MeasurementUnitCommand measurementUnitCommand = new MeasurementUnitCommand();
-        measurementUnitCommand.setId(123L);
-        measurementUnitCommand.setMeasure("Pint");
+        MeasurementUnit measurementUnit = new MeasurementUnit();
+        measurementUnit.setId(123L);
+        measurementUnit.setMeasure("Pint");
 
-        MeasurementUnit measurementUnit = converter.convert(measurementUnitCommand);
-        assertEquals(123L, measurementUnit.getId());
+        MeasurementUnitCommand measurementUnitCommand = converter.convert(measurementUnit);
+        assertEquals(123L, measurementUnitCommand.getId());
         assertEquals("Pint", measurementUnit.getMeasure());
     }
 }
